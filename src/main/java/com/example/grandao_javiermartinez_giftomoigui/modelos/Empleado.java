@@ -9,12 +9,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.math.BigDecimal;
 
 @Data
-@Document(collection = "empleados")  // Esta anotación indica que la clase será mapeada a una colección "empleados"
+@Document(collection = "empleados")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Empleado {
-    @Id  // MongoDB usa este campo como identificador único
-    private String id;  // El tipo debe ser String para que MongoDB gestione el ObjectId internamente
+    @Id
+    private String id;
 
     @NotNull(message = "El nombre no puede ser nulo")
     @Size(min = 1, max = 100, message = "El nombre debe tener entre 1 y 100 caracteres")
