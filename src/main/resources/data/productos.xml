@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<productos>
+    <producto>
+        <descripcion>Teléfono inteligente con pantalla OLED</descripcion>
+        <id>1</id>
+        <nombre>gift</nombre>
+        <precio>699.99</precio>
+    </producto>
+    <producto>
+        <descripcion>Teléfono inteligente con pantalla OLED</descripcion>
+        <id>2</id>
+        <nombre>gift1</nombre>
+        <precio>699.99</precio>
+    </producto>
+</productos>
