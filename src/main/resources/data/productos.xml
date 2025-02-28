@@ -12,4 +12,10 @@
         <nombre>gift1</nombre>
         <precio>699.99</precio>
     </producto>
+    <producto>
+        <descripcion>Chupachus de menta</descripcion>
+        <id>3</id>
+        <nombre>Lollypop</nombre>
+        <precio>1.99</precio>
+    </producto>
 </productos>

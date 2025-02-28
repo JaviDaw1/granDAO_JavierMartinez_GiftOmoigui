@@ -58,5 +58,18 @@ public class ProductoRepository {
             throw new RuntimeException("Error al escribir en el archivo XML", e);
         }
     }
+    public Producto update(int id, Producto updatedProducto) {
+        List<Producto> productos = findAll();
+        for (int i = 0; i < productos.size(); i++) {
+            if (productos.get(i).getId() == id) {
+                updatedProducto.setId(id);
+                productos.set(i, updatedProducto);
+                writeToFile(productos);
+                return updatedProducto;
+            }
+        }
+        return null; // Producto no encontrado
+    }
+
 }
 

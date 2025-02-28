@@ -32,4 +32,16 @@ public class ProductoController {
     public ResponseEntity<Producto> create(@RequestBody Producto producto) {
         return ResponseEntity.ok(productoService.save(producto));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable int id) {
+        productoService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Producto> update(@PathVariable int id, @RequestBody Producto updatedProducto) {
+        Producto producto = productoService.update(id, updatedProducto);
+        return (producto != null) ? ResponseEntity.ok(producto) : ResponseEntity.notFound().build();
+    }
 }
