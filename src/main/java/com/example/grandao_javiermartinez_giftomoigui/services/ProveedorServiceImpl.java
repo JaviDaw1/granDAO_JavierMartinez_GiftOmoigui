@@ -5,10 +5,10 @@ import com.example.grandao_javiermartinez_giftomoigui.modelos.Proveedor;
 import com.example.grandao_javiermartinez_giftomoigui.repositories.ProveedorRepositoryFicheros;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-
-@Service
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;@Service
 public class ProveedorServiceImpl implements ProveedorService {
 
     private final ProveedorRepositoryFicheros proveedorRepository;
@@ -20,35 +20,43 @@ public class ProveedorServiceImpl implements ProveedorService {
     }
 
     @Override
-    public List<Proveedor> findAll(boolean desdeArchivo) {
-        return desdeArchivo ? proveedorFicherosDAO.obtenerTodos() : proveedorRepository.findAll();
+    public List<Proveedor> findAll() {
+        List<Proveedor> proveedores = proveedorRepository.findAll();  // Obtener todos los proveedores desde la base de datos
+        actualizarArchivo(proveedores);  // Sincronizar el archivo con la base de datos
+        return proveedores;
     }
 
     @Override
-    public Proveedor findById(Integer id) {
-        return proveedorRepository.findById(id).orElseThrow(() -> new RuntimeException("Proveedor no encontrado"));
+    public void save(Proveedor proveedor) {
+        proveedorRepository.save(proveedor);  // Guardar en la base de datos
+        proveedorFicherosDAO.guardar(proveedor);  // Guardar en el archivo
     }
 
     @Override
     public void deleteById(Integer id) {
-        proveedorRepository.deleteById(id);
+        proveedorRepository.deleteById(id);  // Eliminar de la base de datos
+        proveedorFicherosDAO.eliminar(id);  // Eliminar del archivo
     }
 
     @Override
-    public Proveedor save(Proveedor proveedor, boolean enArchivo) {
-        if (enArchivo) {
-            proveedorFicherosDAO.guardar(proveedor);
-            return proveedor; // No retorna ID porque está en archivo
+    public void updateById(Integer id, Proveedor proveedor) {
+        if (proveedorRepository.existsById(id)) {
+            proveedor.setId(id);
+            proveedorRepository.save(proveedor);  // Actualizar en la base de datos
+            proveedorFicherosDAO.actualizar(id, proveedor);  // Actualizar en el archivo
         }
-        return proveedorRepository.save(proveedor);
     }
 
-    @Override
-    public Proveedor update(Integer id, Proveedor proveedor) {
-        Proveedor proveedorExistente = findById(id);
-        proveedorExistente.setNombre(proveedor.getNombre());
-        proveedorExistente.setDireccion(proveedor.getDireccion());
-        proveedorExistente.setTelefono(proveedor.getTelefono());
-        return proveedorRepository.save(proveedorExistente);
+    // Método para sincronizar la base de datos con el archivo
+    private void actualizarArchivo(List<Proveedor> proveedores) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/data/proveedores.txt", false))) {
+            for (Proveedor proveedor : proveedores) {
+                // Escribir el ID al principio, seguido por el nombre, dirección y teléfono
+                bw.write(proveedor.getId() + "," + proveedor.getNombre() + ";" + proveedor.getDireccion() + ";" + proveedor.getTelefono());
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

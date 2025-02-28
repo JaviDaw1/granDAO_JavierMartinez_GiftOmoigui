@@ -6,9 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
-@RequestMapping("/api/proveedores")
+@RequestMapping("/proveedores")
 public class ProveedorController {
 
     private final ProveedorService proveedorService;
@@ -17,36 +16,26 @@ public class ProveedorController {
         this.proveedorService = proveedorService;
     }
 
-    // Obtener todos (BD o Archivo)
     @GetMapping
-    public ResponseEntity<List<Proveedor>> obtenerTodos(@RequestParam(required = false) String fuente) {
-        boolean desdeArchivo = "archivo".equalsIgnoreCase(fuente);
-        return ResponseEntity.ok(proveedorService.findAll(desdeArchivo));
+    public ResponseEntity<List<Proveedor>> obtenerTodos() {
+        return ResponseEntity.ok(proveedorService.findAll());
     }
 
-    // Obtener por ID (solo BD)
-    @GetMapping("/{id}")
-    public ResponseEntity<Proveedor> obtenerPorId(@PathVariable Integer id) {
-        return ResponseEntity.ok(proveedorService.findById(id));
-    }
-
-    // Guardar (BD o Archivo)
     @PostMapping
-    public ResponseEntity<Proveedor> guardar(@RequestBody Proveedor proveedor, @RequestParam(required = false) String fuente) {
-        boolean enArchivo = "archivo".equalsIgnoreCase(fuente);
-        return ResponseEntity.ok(proveedorService.save(proveedor, enArchivo));
+    public ResponseEntity<Proveedor> guardar(@RequestBody Proveedor proveedor) {
+        proveedorService.save(proveedor);  // Guardamos el proveedor
+        return ResponseEntity.ok(proveedor);
     }
 
-    // Actualizar (solo BD)
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> borrar(@PathVariable Integer id) {
+        proveedorService.deleteById(id);  // Borramos el proveedor por su ID
+        return ResponseEntity.noContent().build();
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Proveedor> actualizar(@PathVariable Integer id, @RequestBody Proveedor proveedor) {
-        return ResponseEntity.ok(proveedorService.update(id, proveedor));
-    }
-
-    // Eliminar (solo BD)
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
-        proveedorService.deleteById(id);
-        return ResponseEntity.noContent().build();
+        proveedorService.updateById(id, proveedor);  // Actualizamos el proveedor por su ID
+        return ResponseEntity.ok(proveedor);
     }
 }

@@ -1,0 +1,10 @@
+1,Tech Supplies;Av. Tecnológica 123;555-7890
+2,Office World;Calle Comercio 456;555-4321
+3,Global Parts;Avenida Central 789;555-6543
+4,ElectroMart;Zona Industrial 101;555-9876
+5,Digital Market;Calle Tecnología 202;555-2233
+6,PC Factory;Boulevard Informática 303;555-4455
+7,Innova Supplies;Avenida Industrial 404;555-6677
+8,SmartTech;Calle Innovación 505;555-8899
+10,Gift1;Calle Falsa 123;123456789
+11,NuevoNombre;Nueva dirección 123;987654321

@@ -4,9 +4,8 @@ import com.example.grandao_javiermartinez_giftomoigui.modelos.Proveedor;
 import java.util.List;
 
 public interface ProveedorService {
-    List<Proveedor> findAll(boolean desdeArchivo);
-    Proveedor findById(Integer id);
-    void deleteById(Integer id);
-    Proveedor save(Proveedor proveedor, boolean enArchivo);
-    Proveedor update(Integer id, Proveedor proveedor);
+    List<Proveedor> findAll();
+    void save(Proveedor proveedor);
+    void deleteById(Integer id);  // Método para eliminar un proveedor por ID
+    void updateById(Integer id, Proveedor proveedor);  // Método para actualizar un proveedor por ID
 }
