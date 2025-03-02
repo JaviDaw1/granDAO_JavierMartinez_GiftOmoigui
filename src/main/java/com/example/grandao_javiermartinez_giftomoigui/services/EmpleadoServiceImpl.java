@@ -1,3 +1,4 @@
+/*
 package com.example.grandao_javiermartinez_giftomoigui.services;
 
 import com.example.grandao_javiermartinez_giftomoigui.modelos.Empleado;
@@ -43,3 +44,4 @@ public class EmpleadoServiceImpl implements EmpleadoService {
         empleadoRepository.deleteById(id);
     }
 }
+*/

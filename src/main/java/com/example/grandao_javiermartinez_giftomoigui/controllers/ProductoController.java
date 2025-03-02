@@ -1,3 +1,4 @@
+/*
 package com.example.grandao_javiermartinez_giftomoigui.controllers;
 
 import com.example.grandao_javiermartinez_giftomoigui.modelos.Producto;
@@ -45,3 +46,4 @@ public class ProductoController {
         return (producto != null) ? ResponseEntity.ok(producto) : ResponseEntity.notFound().build();
     }
 }
+*/

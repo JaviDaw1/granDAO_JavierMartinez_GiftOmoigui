@@ -1,3 +1,4 @@
+/*
 package com.example.grandao_javiermartinez_giftomoigui.services;
 
 import com.example.grandao_javiermartinez_giftomoigui.dao.ProveedorFicherosDAO;
@@ -60,3 +61,4 @@ public class ProveedorServiceImpl implements ProveedorService {
         }
     }
 }
+*/

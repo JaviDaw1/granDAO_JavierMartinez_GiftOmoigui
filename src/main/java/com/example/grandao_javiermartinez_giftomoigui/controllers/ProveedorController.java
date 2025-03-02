@@ -1,3 +1,4 @@
+/*
 package com.example.grandao_javiermartinez_giftomoigui.controllers;
 
 import com.example.grandao_javiermartinez_giftomoigui.modelos.Proveedor;
@@ -39,3 +40,4 @@ public class ProveedorController {
         return ResponseEntity.ok(proveedor);
     }
 }
+*/

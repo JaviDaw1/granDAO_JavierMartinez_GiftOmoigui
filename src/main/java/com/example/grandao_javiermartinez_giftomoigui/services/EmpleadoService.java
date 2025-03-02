@@ -1,3 +1,4 @@
+/*
 package com.example.grandao_javiermartinez_giftomoigui.services;
 
 import com.example.grandao_javiermartinez_giftomoigui.modelos.Empleado;
@@ -11,3 +12,4 @@ public interface EmpleadoService {
     Empleado update(String id, Empleado empleado);
     void delete(String id);
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.example.grandao_javiermartinez_giftomoigui.services;
 
 import com.example.grandao_javiermartinez_giftomoigui.modelos.Cliente;
@@ -43,3 +44,4 @@ public class ClienteServiceImpl implements ClienteService {
         clienteRepository.deleteById(id);
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.example.grandao_javiermartinez_giftomoigui.services;
 
 import com.example.grandao_javiermartinez_giftomoigui.modelos.Proveedor;
@@ -9,3 +10,4 @@ public interface ProveedorService {
     void deleteById(Integer id);  // Método para eliminar un proveedor por ID
     void updateById(Integer id, Proveedor proveedor);  // Método para actualizar un proveedor por ID
 }
+*/

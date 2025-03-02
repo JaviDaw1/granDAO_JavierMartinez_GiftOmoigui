@@ -18,4 +18,10 @@
         <nombre>Lollypop</nombre>
         <precio>1.99</precio>
     </producto>
+    <producto>
+        <descripcion>Teléfono inteligente con pantalla OLED</descripcion>
+        <id>4</id>
+        <nombre>Samsung A22</nombre>
+        <precio>899.99</precio>
+    </producto>
 </productos>
